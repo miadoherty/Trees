@@ -10,6 +10,11 @@ def checker(choice):
         return False
 
 
+# function to display error message
+def error():
+    print("Invalid answer, please try again. ")
+
+
 # function to end game at any time
 def end():
     print("Are you sure you want to end the game? ")
@@ -19,13 +24,21 @@ def end():
     elif choice == "no":
         print("alrighty")
     else:
-        print("Invalid answer, please try again. ")
+        error()
         end()
 
-end()
+
+# function prints instructions
+def hello():
+    choice = str(input("Howdy partner! Is this your first rodeo? ")).lower()
+    if choice == "yes":
+        print("intro plays here. ")
+    elif choice == "no":
+        print("Alrighty. ")
+    else:
+        error()
+        hello()
 
 
-waeugbuerb
-gbweubg
-argiwern
-
+def instruct():
+    print("It's pretty simple. Answer the questions with the corresponding lettter. ")
