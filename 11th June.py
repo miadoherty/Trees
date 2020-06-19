@@ -11,15 +11,15 @@ def checker(choice):
 
 
 # function to display error message
-def error():
-    print("Invalid answer, please try again. ")
+# def error():
+# print("Invalid answer, please try again. ")
 
-
-# function to end game at any time
 def end():
     print("Are you sure you want to end the game? ")
     choice = str(input("Enter yes or no: ")).lower()
     if choice == "yes":
+
+# function to end game at any time
         print("Thanks for playing. ")
     elif choice == "no":
         print("alrighty")
@@ -35,6 +35,8 @@ def hello():
         instruct()
     elif choice == "no":
         print("Intro plays here. ")
+    elif choice == "end game":
+        end()
     else:
         error()
         hello()
@@ -42,7 +44,8 @@ def hello():
 
 # function prints instructions
 def instruct():
-    print("It's pretty simple. Answer the questions with the corresponding letter. ")
+    print("It's pretty simple. ")
+    print("Answer the questions with the corresponding letter. ")
     print("Type end game at any time to, you'll never guess, end the game. ")
     choice = str(input("Do you understand? ")).lower()
     if choice == "yes":
@@ -53,12 +56,5 @@ def instruct():
     else:
         error()
         instruct()
-
-
-# tracks number of trees in rainforest????????????????????????????
-while rainforest < 100:
-    print("You need to plant more trees. ")
-    ra = raw_input("How many trees do you want to plant? ")
-
 
 hello()
