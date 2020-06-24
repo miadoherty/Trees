@@ -11,21 +11,28 @@ def checker(choice):
 
 
 # function to display error message
-# def error():
-# print("Invalid answer, please try again. ")
+def error():
+    print("Invalid answer, please try again. ")
 
-def end():
-    print("Are you sure you want to end the game? ")
-    choice = str(input("Enter yes or no: ")).lower()
-    if choice == "yes":
 
 # function to end game at any time
-        print("Thanks for playing. ")
+def exit():
+    value = " "
+    choice = str(input("Are you sure you want to end the game? ")).lower()
+    if choice == "yes":
+        value = "Y"
     elif choice == "no":
-        print("alrighty")
+        value = "N"
+        print("Alright let's get right back to it. ")
     else:
         error()
-        end()
+        exit()
+    return value
+
+
+# function reads goodbye message to user
+def quit():
+    print("Thanks for playing :) ")
 
 
 # function greets user
@@ -36,7 +43,11 @@ def hello():
     elif choice == "no":
         print("Intro plays here. ")
     elif choice == "end game":
-        end()
+        x = exit()
+        if x == "Y":
+            quit()
+        else:
+            hello()
     else:
         error()
         hello()
@@ -53,8 +64,15 @@ def instruct():
     elif choice == "no":
         print("Alright... One more time. ")
         instruct()
+    elif choice == "end game":
+        x = exit()
+        if x == "Y":
+            quit()
+        else:
+            instruct()
     else:
         error()
         instruct()
+
 
 hello()
