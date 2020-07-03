@@ -57,9 +57,20 @@ def hello():
 
 # function prints instructions
 def instruct():
-    print("It's pretty simple. ")
-    print("Answer the questions with the corresponding letter. ")
-    print("Type end game at any time to, you'll never guess, end the game. ")
+    print("This is how it works: ")
+    time.sleep(1)
+    print("Starting in the tundra and working your way to the desert "
+          "you will replant the plants around the world. ")
+    time.sleep(1.5)
+    print("You will start with $1 in your pocket. ")
+    time.sleep(1)
+    print("As you make more money, you will be able to unlock new vegetation "
+          "to plant, ")
+    time.sleep(1)
+    print(" and eventually even have enough money to move into the next biome. ")
+    time.sleep(2)
+    print("Type end game at any time to end the game. ")
+    time.sleep(1)
     choice = str(input("Do you understand? ")).lower()
     if choice == "yes":
         intro()
@@ -89,8 +100,13 @@ def intro():
           "responsibility to revive earth to its former glory. ")
     time.sleep(2)
     print("You are going to travel through the various biomes of Earth, ")
-    print("making sure to plant the right vegetation "
-          "in the appropriate places. ")
+    time.sleep(1)
+    print("simultaneously reviving and learning about the plant life. ")
+    time.sleep(2)
+    print("I wish you the best of luck. ")
+    time.sleep(1.5)
+    print("The fate of humanity is in your hands. ")
+    time.sleep(2)
     choice = str(input("Are you ready to play? ")).lower()
     if choice == "yes":
         print("The game starts now. ")
@@ -105,6 +121,10 @@ def intro():
     else:
         error()
         intro()
+
+
+def tundra():
+    print
 
 
 hello()
