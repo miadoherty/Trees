@@ -1,4 +1,6 @@
+# importing libraries to be used
 import time
+import math
 
 valid_answers = ["a", "b", "c"]
 
@@ -122,9 +124,24 @@ def intro():
         error()
         intro()
 
+# Figuring out how to calculate wallet contents
+cost_tundra = 1 * 1.1
+
 
 def tundra():
-    print
+    print("BRRR... It sure is cold in the tundra.")
+    choice = (input("Would you like to purchase a tree for money ")).lower()
+    trees_tundra = 0
+    if choice == "yes":
+        trees_tundra =+1
+        print("${:.2f}".format(trees_tundra))
+        tundra()
+    else:
+        print("no")
+        tundra()
 
 
-hello()
+tundra()
+
+
+
