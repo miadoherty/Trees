@@ -129,17 +129,21 @@ def undra():
     print("Introduce the tundra ")
     undra_value = 0
     undra_profit = 0
+    undra_cost = 0
     while undra_profit < 100:
-        if True: 
-            choice = (input("Plant tree? "))
+        if True:
+            print("Would you like to plant a tree for: ")
+            choice = (input("${:.2f} ".format(undra_cost)))
             if choice == "yes":
+                undra_cost = undra_value * 2
                 undra_value += 1
+                undra_profit = (undra_value ** 2) - (undra_cost)
                 print("You have planted", undra_value, "trees. ")
-                undra_profit = (undra_value ** 2) - (undra_value * 2)
+                print("You currently have: ")
                 print("${:.2f}".format(undra_profit))
             else:
                 print("${:.2f}".format(undra_value))
-    while undra_profit >=100<1000:
+    while undra_profit >= 100:
         if True:
             print("You have made $100. You may now plant the next plant. ")
             choice = (input("Plant tree? "))
@@ -157,19 +161,16 @@ def undra():
 
 
 def tundra():
-    tundra_value = 0
-    tundra_profit = 0
-    while tundra_profit <100 :
-        if True: 
-            choice = (input("Plant tree? "))
-            if choice == "yes":
-                tundra_value += 1
-                print("You have planted", tundra_value, "trees. ")
-                tundra_profit = 1 + (tundra_value ** 2) - (tundra_value * 2)
-                print("${:.2f}".format(tundra_profit))
-            else:
-                print("${:.2f}".format(tundra_value))
-    print("You have made over $100. Nice. ")
+    s = print("Brrr... It sure is cold in the tundra. ".format(message='Hi')
 
 
-undra()
+
+
+
+              # "Vegetation in the tundra is already sparse enough, but look at it now. "
+              # "There’s nothing. Hey, what’s that over there? A $1 coin!? "
+              # "Hey how about you grab it and use it to purchase your first plant. ", "%-6s" % s  )
+    
+
+
+'{message: <16}'.format(message='Hi')
