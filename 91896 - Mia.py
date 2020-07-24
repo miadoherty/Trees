@@ -73,9 +73,15 @@ def instruct():
     time.sleep(2)
     print("Type end game at any time to end the game. ")
     time.sleep(1)
+    instruct_choice()
+
+
+# takes input from user
+def instruct_choice():
     choice = str(input("Do you understand? ")).lower()
     if choice == "yes":
-        intro()
+        print("Loading game... ")
+        time.sleep(2)
     elif choice == "no":
         print("Alright... One more time. ")
         instruct()
@@ -84,10 +90,10 @@ def instruct():
         if x == "Y":
             quit()
         else:
-            instruct()
+            instruct_choice()
     else:
         error()
-        instruct()
+        instruct_choice()
 
 
 # function prints the introduction
@@ -158,19 +164,4 @@ def undra():
             print("You have made $1000. You may now plant the next plant. ")
             break
   
-
-
-def tundra():
-    s = print("Brrr... It sure is cold in the tundra. ".format(message='Hi')
-
-
-
-
-
-              # "Vegetation in the tundra is already sparse enough, but look at it now. "
-              # "There’s nothing. Hey, what’s that over there? A $1 coin!? "
-              # "Hey how about you grab it and use it to purchase your first plant. ", "%-6s" % s  )
-    
-
-
-'{message: <16}'.format(message='Hi')
+hello()
