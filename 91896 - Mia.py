@@ -2,7 +2,7 @@
 import time
 import math
 
-valid_answers = ["a", "b", "c"]
+valid_answers = ["a", "b", "c", "end game"]
 
 # function checks answers and makes sure they are valid ^
 def checker(choice):
@@ -67,6 +67,9 @@ def instruct():
     time.sleep(1.5)
     print("You will start with $1 in your pocket. ")
     time.sleep(1)
+    print("With more tree comes more resources "
+          "which in turn can be sold for money. ")
+    time.sleep(1)
     print("As you make more money, you will be able to unlock new vegetation "
           "to plant, ")
     time.sleep(1)
@@ -77,10 +80,12 @@ def instruct():
     instruct_choice()
 
 
+# takes input from user
 def instruct_choice():
     choice = str(input("Do you understand? ")).lower()
     if choice == "yes":
-        intro()
+        print("Loading game... ")
+        time.sleep(2)
     elif choice == "no":
         print("Alright... One more time. ")
         instruct_choice()
@@ -117,12 +122,12 @@ def intro():
     intro_choice()
 
 
-# asks user if they are ready to play
 def intro_choice():
     choice = str(input("Are you ready to play? ")).lower()
     if choice == "yes":
-        print("The game starts now. ")
-        tundra_text()
+        print("loading... ")
+        time.sleep(3)
+        tundra_intro()
     elif choice == "no":
         print("Okay. I will ask you again in five seconds. ")
         time.sleep(5)
@@ -132,37 +137,35 @@ def intro_choice():
         if x == "Y":
             quit()
         else:
-            intro()
+            intro_choice()
     else:
         error()
         intro_choice()
 
 
-def tundra_text():
+def tundra_intro():
     print("Brrr... It sure is cold in the tundra. ")
     time.sleep(1)
     print("Maybe I should have worn socks. ")
+    time.sleep(1.5)
+    print("While we are here, why don't I tell you some fun facts about the tundra. ")
+    time.sleep(1.5)
+    print("Did you know that the word 'tundra' comes from the Finnish word ' tunturia'. ")
     time.sleep(2)
-    print("While we are here, "
-          "why don't I tell you some fun facts about the tundra. ")
-    time.sleep(2)
-    print("Did you know that the word 'tundra' comes from the Finnish "
-          "word 'tunturia', which means barren or treeless hill. ")
+    print("'Tunturia' means barren or treeless hill. ")
     time.sleep(2)
     print("Rather than big trees, the tundra has patchy vegetation "
           "that tends to be low to the ground. ")
     time.sleep(2)
-    print("This usually consists of grasses, mosses, lichens, sedges and "
-          "small shrubs. ")
-    time.sleep(2)
-    print("These kinds of plants are well adapted to withstand the harsh "
-          "tundra conditions. ")
-    time.sleep(2)
-    print("Hey! ")
+    print("This usually consists of grasses, mosses, lichens, sedges and small shrubs. ")
     time.sleep(1.5)
+    print("These kinds of plants are better adapted to withstand the harsh tundra conditions. ")
+    time.sleep(3)
+    print("Hey! ")
+    time.sleep(1)
     print("What is that over there. ")
     time.sleep(1)
-    print("It looks like a gold coin donation. ")
+    print("It looks like a gold coin donataion. ")
     time.sleep(1)
     coin()
 
@@ -184,84 +187,75 @@ def coin():
         coin()
 
 
-
-def tundra():
-    tundra_value = 1
-    tundra_profit = 0
-    tundra_cost = 0    
-    while tundra_profit <= 100:
-        print("Would you like to plant a tree for: ")
-        choice = str(input("${:.2f} ".format(tundra_cost))).lower()
-        if choice == "yes":
-            tundra_cost = tundra_value * 2
-            tundra_value += 1
-            tundra_profit = (tundra_value ** 2) - (tundra_cost)
-            print("You have planted", tundra_value, "trees. ")
-            print("You currently have: ")
-            print("${:.2f}".format(tundra_profit))
-            time.sleep(1)
-        else:
-            error()
-    while 100 < tundra_profit < 1000:
-        if True:
-            print("You have made $100. You may now plant the next plant. ")
-            choice = (input("Plant tree? ")).lower()
-            if choice == "yes":
-                tundra_cost = tundra_value ** 2
-                tundra_value += 1
-                tundra_profit = 2 * (tundra_value ** 2) - (tundra_cost)
-                print("${:.2f}".format(tundra_profit))
-                time.sleep(1)
-            else:
-                error()
-    if tundra_profit >= 1000:
-        print("You have made $1000")
-
-
-
-
-def undra():
-    undra_profit = 1
+def undra():  
 # cost of each plant
-    bearberry = 1
-    articmoss = 10
-    saxifrage = 100
+    bearberry_cost = 1
+    articmoss_cost = 10
+    saxifrage_cost = 100
 # number of each plant
     bearberry_count = 0
     articmoss_count = 0
     saxifrage_count = 0
-    undra_value = 0
-    while undra_profit <= 100:
-        if undra_profit >= bearberry or undra_profit >= articmoss:
+    undra_count = 0
+# profit from each plant
+    bearberry_profit = 0
+    articmoss_profit = 0
+    saxifrage_profit = 0
+    undra_profit = 1
+    while undra_profit <= 1000 and undra_count <= 50:
+        if undra_profit >= bearberry_cost or undra_profit >= articmoss_cost or undra_profit >= saxifrage_cost:
+            print("You currently have: ")
+            print("${:.2f}".format(undra_profit))
+            print("Do you want to plant? ")
             print("A) A bearberry shrub for ")
-            print("${:.2f}".format(bearberry))
+            print("${:.2f}".format(bearberry_cost))
             print("B) Artic moss for ")
-            print("${:.2f} ".format(articmoss))
+            print("${:.2f} ".format(articmoss_cost))
             print("C) Tufted Saxifrage for ")
-            choice = str(input("${:.2f} ".format(saxifrage))).lower()
+            print("${:.2f} ".format(saxifrage_cost))
+            choice = str(input("")).lower()
             if checker(choice) == True:
-                if choice == "a":
+                if choice == "a" and undra_profit >= bearberry_cost:
                     bearberry_count += 1
-                    undra_value = bearberry_count + articmoss_count + saxifrage_count
+                    bearberry_cost *= 1.2
+                    bearberry_profit = 2 + bearberry_count ** 2
+                    undra_count = bearberry_count + articmoss_count + saxifrage_count
+                    undra_profit = (bearberry_profit + articmoss_profit + saxifrage_profit) - bearberry_cost
                     print("You have planted bearberry shrub ")
-                    print("You have planted", undra_value, "trees. ")
-                elif choice == "b":
+                    print("You have planted", undra_count, "trees. ")
+                    time.sleep(1)
+                    print("")
+                elif choice == "b" and undra_profit >= articmoss_cost:
                     articmoss_count += 1
-                    undra_value = bearberry_count + articmoss_count + saxifrage_count
+                    articmoss_cost *= 1.2
+                    articmoss_profit = 2 + articmoss_count ** 2
+                    undra_count = bearberry_count + articmoss_count + saxifrage_count
+                    undra_profit += (bearberry_profit + articmoss_profit + saxifrage_profit) - articmoss_cost
                     print("You have planted artic moss ")
-                    print("You have planted", undra_value, "trees. ")
-                else:
+                    print("You have planted", undra_count, "trees. ")
+                    time.sleep(1)
+                    print("")
+                elif choice == "c" and undra_profit >+ saxifrage_cost:
                     saxifrage_count += 1
-                    undra_value = bearberry_count + articmoss_count + saxifrage_count
+                    saxifrage_cost *= 1.2
+                    saxifrage_profit = 2 + saxifrage_count ** 2 
+                    undra_count = bearberry_count + articmoss_count + saxifrage_count
+                    undra_profit += (bearberry_profit + articmoss_profit + saxifrage_profit) - saxifrage_cost
                     print("You have planted tufted saxifrage ")
-                    print("You have planted", undra_value, "trees. ")
+                    print("You have planted", undra_count, "trees. ")
+                    time.sleep(1)
+                    print("")
+                elif choice == "end game":
+                    x = exit()
+                    if x == "Y":
+                        quit()
+                    else:
+                        undra()
+                else:
+                    print("Sorry you have insufficent funds. ")
+                    time.sleep(1)
+    print("You have made over ")
+    print("${:.2f}".format(undra_profit))
 
 
 undra()
-
-
-
-
-
-
-
