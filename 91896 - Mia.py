@@ -2,7 +2,8 @@
 import time
 import math
 
-valid_answers = ["a", "b", "c"]
+valid_answers = ["a", "b", "c", "end game"]
+
 
 # function checks answers and makes sure they are valid ^
 def checker(choice):
@@ -190,17 +191,17 @@ def coin():
         coin()
 
 
-def tundra():  
-# cost of each plant
+def tundra():
+    # cost of each plant
     bearberry_cost = 1
     articmoss_cost = 10
     saxifrage_cost = 100
-# number of each plant
+    # number of each plant
     bearberry_count = 0
     articmoss_count = 0
     saxifrage_count = 0
     tundra_count = 0
-# profit from each plant
+    # profit from each plant
     bearberry_profit = 0
     articmoss_profit = 0
     saxifrage_profit = 0
@@ -217,7 +218,7 @@ def tundra():
             print("C) Tufted Saxifrage for ")
             print("${:.2f} ".format(saxifrage_cost))
             choice = str(input("")).lower()
-            if checker(choice) == True:
+            if checker(choice) is True:
                 if choice == "a" and tundra_profit >= bearberry_cost:
                     bearberry_count += 1
                     bearberry_cost *= 1.2
@@ -238,10 +239,10 @@ def tundra():
                     print("You have planted", tundra_count, "trees. ")
                     time.sleep(1)
                     print("")
-                elif choice == "c" and tundra_profit >+ saxifrage_cost:
+                elif choice == "c" and tundra_profit >= saxifrage_cost:
                     saxifrage_count += 1
                     saxifrage_cost *= 1.2
-                    saxifrage_profit = 2 + saxifrage_count ** 2 
+                    saxifrage_profit = 2 + saxifrage_count ** 2
                     tundra_count = bearberry_count + articmoss_count + saxifrage_count
                     tundra_profit += (bearberry_profit + articmoss_profit + saxifrage_profit) - saxifrage_cost
                     print("You have planted tufted saxifrage ")
@@ -252,20 +253,23 @@ def tundra():
                     x = exit()
                     if x == "Y":
                         quit()
-                    else:
-                        tundra()
                 else:
                     print("Sorry you have insufficent funds. ")
                     time.sleep(1)
-    print("You have made a grand total of: ")
-    print("${:.2f}".format(tundra_profit))
-    print("Wow you made so much money from planting plant and harvesting the resources, sustainably. ")
-    tundra_choice()
+    if tundra_profit >= 1000:
+        print("You have made a grand total of: ")
+        print("${:.2f}".format(tundra_profit))
+        tundra_choice()
 
 
 def tundra_choice():
-    print("Would you like to move on to the next biome. ")
-    choice = str(input("(You will lose all your money when you restart) "))
+    print("")
+    print("loading... ")
+    time.sleep(3)
+    print("Wow you made so much money from planting plant and harvesting the resources, sustainably. ")
+    print("You only need $500 to move on to the next biome and buy your next plant. ")
+    time.sleep(1)
+    choice = str(input("The rest your money will  "))
     if choice == "yes":
         rainforest_text()
     elif choice == "end game":
@@ -282,20 +286,70 @@ def rainforest_text():
 
 
 def rainforest():
-# cost of each plant
+    # cost of each plant
     heliconia_cost = 1
-    articmoss_cost = 10
-    saxifrage_cost = 100
-# number of each plant
+    monkeybrush_cost = 10
+    cacau_cost = 100
+    # number of each plant
     heliconia_count = 0
-    articmoss_count = 0
-    saxifrage_count = 0
+    monkeybrush_count = 0
+    cacau_count = 0
     rainforest_count = 0
-# profit from each plant
+    # profit from each plant
     heliconia_profit = 0
-    articmoss_profit = 0
-    saxifrage_profit = 0
+    monkeybrush_profit = 0
+    cacau_profit = 0
     rainforest_profit = 1
-    while rainforest_profit 
+    while rainforest_profit <= 10000:
+        if rainforest_profit >= heliconia_cost or rainforest_profit >= monkeybrush_cost or rainforest_profit >= cacau_cost:
+            print("You currently have: ")
+            print("${:.2f}".format(rainforest_profit))
+            print("")
+            print("Do you want to plant? ")
+            print("A) A heliconia flower for ")
+            print("${:.2f}".format(heliconia_cost))
+            print("B) A monkey brush vine for ")
+            print("${:.2f} ".format(monkeybrush_cost))
+            print("C) A cacau tree for ")
+            print("${:.2f} ".format(cacau_cost))
+            choice = str(input("")).lower()
+            if checker(choice) is True:
+                if choice == "a" and rainforest_profit >= heliconia_cost:
+                    heliconia_count += 1
+                    heliconia_cost *= 2.4
+                    heliconia_profit = 2 + heliconia_count ** 3
+                    rainforest_count = heliconia_count + monkeybrush_count + cacau_count
+                    rainforest_profit = (heliconia_profit + monkeybrush_profit + cacau_profit) - heliconia_cost
+                    print("You have planted heliconia flower ")
+                    print("You have planted", rainforest_count, "trees. ")
+                    time.sleep(1)
+                    print("")
+                elif choice == "b" and rainforest_profit >= monkeybrush_cost:
+                    monkeybrush_count += 1
+                    monkeybrush_cost *= 2.4
+                    monkeybrush_profit = 2 + monkeybrush_count ** 3
+                    rainforest_count = heliconia_count + monkeybrush_count + cacau_count
+                    tundra_profit += (heliconia_profit + monkeybrush_profit + cacau_profit) - monkeybrush_cost
+                    print("You have planted monkey brush vine ")
+                    print("You have planted", rainforest_count, "trees. ")
+                    time.sleep(1)
+                    print("")
+                elif choice == "c" and rainforest_profit >= cacau_cost:
+                    cacau_count += 1
+                    cacau_cost *= 2.4
+                    cacau_profit = 2 + cacau_count ** 3
+                    rainforest_count = heliconia_count + monkeybrush_count + cacau_count
+                    rainforest_profit += (heliconia_profit + monkeybrush_profit + cacau_profit) - cacau_cost
+                    print("You have planted cacau tree ")
+                    print("You have planted", rainforest_count, "trees. ")
+                    time.sleep(1)
+                    print("")
+                elif choice == "end game":
+                    x = exit()
+                    if x == "Y":
+                        quit()
+                else:
+                    print("Sorry you have insufficent funds. ")
+                    time.sleep(1)
 
-
+rainforest()
