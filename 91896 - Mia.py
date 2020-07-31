@@ -76,6 +76,7 @@ def instruct():
     instruct_choice()
 
 
+# function takes input from user to check they understand
 def instruct_choice():
     choice = str(input("Do you understand? ")).lower()
     if choice == "yes":
@@ -118,7 +119,7 @@ def intro():
     intro_choice()
 
 
-# asks user if they are ready to play
+# function takes input from user to check they are ready to play
 def intro_choice():
     choice = str(input("Are you ready to play? ")).lower()
     if choice == "yes":
@@ -139,6 +140,7 @@ def intro_choice():
         intro_choice()
 
 
+# function prints the tundra text
 def tundra_text():
     time.sleep(2)
     print("Brrr... It sure is cold in the tundra. ")
@@ -169,6 +171,7 @@ def tundra_text():
     coin()
 
 
+# function ask if user wants to pick up the coin (must in order to move on with game)
 def coin():
     choice = str(input("Do you want to pick up the coin? ")).lower()
     if choice == "yes":
@@ -191,6 +194,7 @@ def coin():
         coin()
 
 
+# 
 def tundra():
     # cost of each plant
     bearberry_cost = 1
@@ -253,6 +257,7 @@ def tundra():
                     x = exit()
                     if x == "Y":
                         quit()
+                        break
                 else:
                     print("Sorry you have insufficent funds. ")
                     time.sleep(1)
@@ -317,7 +322,7 @@ def rainforest():
                 if choice == "a" and rainforest_profit >= heliconia_cost:
                     heliconia_count += 1
                     heliconia_cost *= 2.4
-                    heliconia_profit = 2 + heliconia_count ** 3
+                    heliconia_profit = 4 + heliconia_count ** 3
                     rainforest_count = heliconia_count + monkeybrush_count + cacau_count
                     rainforest_profit = (heliconia_profit + monkeybrush_profit + cacau_profit) - heliconia_cost
                     print("You have planted heliconia flower ")
@@ -327,9 +332,9 @@ def rainforest():
                 elif choice == "b" and rainforest_profit >= monkeybrush_cost:
                     monkeybrush_count += 1
                     monkeybrush_cost *= 2.4
-                    monkeybrush_profit = 2 + monkeybrush_count ** 3
+                    monkeybrush_profit = 4 + monkeybrush_count ** 3
                     rainforest_count = heliconia_count + monkeybrush_count + cacau_count
-                    tundra_profit += (heliconia_profit + monkeybrush_profit + cacau_profit) - monkeybrush_cost
+                    rainforest_profit += (heliconia_profit + monkeybrush_profit + cacau_profit) - monkeybrush_cost
                     print("You have planted monkey brush vine ")
                     print("You have planted", rainforest_count, "trees. ")
                     time.sleep(1)
@@ -337,7 +342,7 @@ def rainforest():
                 elif choice == "c" and rainforest_profit >= cacau_cost:
                     cacau_count += 1
                     cacau_cost *= 2.4
-                    cacau_profit = 2 + cacau_count ** 3
+                    cacau_profit = 4 + cacau_count ** 3
                     rainforest_count = heliconia_count + monkeybrush_count + cacau_count
                     rainforest_profit += (heliconia_profit + monkeybrush_profit + cacau_profit) - cacau_cost
                     print("You have planted cacau tree ")
@@ -352,4 +357,4 @@ def rainforest():
                     print("Sorry you have insufficent funds. ")
                     time.sleep(1)
 
-rainforest()
+tundra()
